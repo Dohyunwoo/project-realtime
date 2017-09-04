@@ -2,8 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    var now = new Date();
-    var nowTime = now.getHours() + "시" + now.getMinutes() + "분" + now.getSeconds() + "초";
-    return nowTime;
+    function realTime() {
+      var time = new Date();
+      var clock = document.getElementById('clock');
+      clock.innerHTML = time.getHours() + '시' + time.getMinutes() + '분' + time.getSeconds() + '초';
+    }
+    setInterval(function(){realTime()}, 1000);
   }
 });
